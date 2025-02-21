@@ -35,25 +35,41 @@ const ParallaxBanner = () => {
     };
   }, []);
 
+  // Максимальное смещение в пикселях
+  const maxOffset = 100;
+
   return (
     <div className={styles.banner}>
       <div className={styles.container}>
         {/* Фоновые элементы с параллакс-эффектом */}
-        {[...Array(9).keys()].map((index) => (
-          <div
-            key={index}
-            className={`${styles.bg} ${styles[`bg${index + 1}`]}`}
-            style={{
-              transform: `translate(${tiltX * (index + 1) * 20}px, ${
-                tiltY * (index + 1) * 20
-              }px)`,
-            }}
-          ></div>
-        ))}
+        {[...Array(9).keys()].map((index) => {
+          // Ограничиваем смещение для каждого элемента
+          const offsetX = Math.max(
+            -maxOffset,
+            Math.min(tiltX * (index + 1) * 20, maxOffset)
+          );
+          const offsetY = Math.max(
+            -maxOffset,
+            Math.min(tiltY * (index + 1) * 20, maxOffset)
+          );
+
+          return (
+            <div
+              key={index}
+              className={`${styles.bg} ${styles[`bg${index + 1}`]}`}
+              style={{
+                transform: `translate(${offsetX}px, ${offsetY}px)`,
+              }}
+            ></div>
+          );
+        })}
         {/* Заголовок */}
         <h1
           style={{
-            transform: `translate(${tiltX * 40}px, ${tiltY * 40}px)`,
+            transform: `translate(
+              ${Math.max(-maxOffset, Math.min(tiltX * 40, maxOffset))}px,
+              ${Math.max(-maxOffset, Math.min(tiltY * 40, maxOffset))}px
+            )`,
           }}
         >
           Perevalov
