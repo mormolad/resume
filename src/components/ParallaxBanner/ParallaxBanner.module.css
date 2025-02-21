@@ -24,6 +24,7 @@
   background-position: center bottom;
   transition: 0.1s;
   background-repeat: no-repeat;
+  transition: transform 0.3s ease-out;
 }
 
 .bg1 {
@@ -63,6 +64,7 @@
   font-size: 11rem;
   font-family: 'Pacifico', cursive;
   color: #df862e;
+  transition: transform 0.3s ease-out;
 }
 
 .intro {
