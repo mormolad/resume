@@ -3,39 +3,49 @@ import React, { useState, useEffect } from 'react';
 import styles from './ParallaxBanner.module.css'; // Используем CSS Modules
 
 const ParallaxBanner = () => {
-  const [mouseX, setMouseX] = useState(0); // Позиция мыши по X
-  const [mouseY, setMouseY] = useState(0); // Позиция мыши по Y
+  const [tiltX, setTiltX] = useState(0); // Наклон по оси X (gamma)
+  const [tiltY, setTiltY] = useState(0); // Наклон по оси Y (beta)
 
-  // Обработчик движения мыши
-  const handleMouseMove = (event: MouseEvent) => {
-    const { clientX, clientY } = event;
-    const { innerWidth, innerHeight } = window;
+  // Обработчик изменения ориентации устройства
+  const handleDeviceOrientation = (event: DeviceOrientationEvent) => {
+    const { gamma, beta } = event;
 
-    // Нормализуем координаты мыши в диапазоне от -1 до 1
-    setMouseX((clientX / innerWidth) * 2 - 1);
-    setMouseY((clientY / innerHeight) * 2 - 1);
+    // Нормализуем углы наклона в диапазоне от -1 до 1
+    if (gamma !== null && beta !== null) {
+      setTiltX(gamma / 90); // gamma: от -90 (влево) до 90 (вправо)
+      setTiltY((beta - 90) / 90); // beta: от 0 (вертикально) до 180 (перевернуто)
+    }
   };
 
-  // Добавляем обработчик события движения мыши
+  // Добавляем обработчик события изменения ориентации
   useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', handleDeviceOrientation);
+    } else {
+      console.warn('DeviceOrientation API не поддерживается в вашем браузере.');
+    }
+
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (window.DeviceOrientationEvent) {
+        window.removeEventListener(
+          'deviceorientation',
+          handleDeviceOrientation
+        );
+      }
     };
   }, []);
 
   return (
     <div className={styles.banner}>
       <div className={styles.container}>
-        {' '}
         {/* Фоновые элементы с параллакс-эффектом */}
         {[...Array(9).keys()].map((index) => (
           <div
             key={index}
             className={`${styles.bg} ${styles[`bg${index + 1}`]}`}
             style={{
-              transform: `translate(${mouseX * (index + 1) * 5}px, ${
-                mouseY * (index + 1) * 5
+              transform: `translate(${tiltX * (index + 1) * 20}px, ${
+                tiltY * (index + 1) * 20
               }px)`,
             }}
           ></div>
@@ -43,7 +53,7 @@ const ParallaxBanner = () => {
         {/* Заголовок */}
         <h1
           style={{
-            transform: `translate(${mouseX * 40}px, ${mouseY * 40}px)`,
+            transform: `translate(${tiltX * 40}px, ${tiltY * 40}px)`,
           }}
         >
           Perevalov
