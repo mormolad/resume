@@ -14,11 +14,11 @@
 
 .bg {
   position: absolute;
-  left: -100px;
+  left: -50%;
   bottom: 0;
   width: 150%;
   height: 120%;
-  margin-left: -20vw;
+
   margin-bottom: -60px;
   background-size: auto 100%;
   background-position: center bottom;
