@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### **Техническое задание на разработку тренажёра**
+#### **1. Общие требования**
+- **Стек технологий:**
+  - Backend: Python + FastAPI/Django
+  - База данных: PostgreSQL
+  - Реальное время: WebSocket
+  - Контейнеризация: Docker
 
-## Getting Started
+- **Основные функции:**
+  - Реализация REST API для управления тренажёром.
+  - Поддержка WebSocket для обновления данных в реальном времени.
+  - Аутентификация и авторизация с использованием JWT (JSON Web Tokens).
+  - Логирование действий пользователей и системных событий.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### **2. REST API**
+##### **Основные эндпоинты**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| **Ресурс**          | **Метод** | **Описание**                                      | **Доступ**         |
+|----------------------|-----------|--------------------------------------------------|--------------------|
+| `/api/auth/`         | POST      | Аутентификация пользователя (логин/пароль)       | Все                |
+| `/api/users/`        | GET       | Получить список пользователей                    | Администратор      |
+| `/api/users/`        | POST      | Создать нового пользователя                      | Администратор      |
+| `/api/faults/`       | POST      | Добавить неисправность                           | Преподаватель      |
+| `/api/metrics/`      | GET       | Получить метрики ученика (ошибки, время выполнения) | Преподаватель      |
+| `/api/simulation/`   | POST      | Запустить/остановить симуляцию                   | Преподаватель      |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### **3. WebSocket**
+##### **События в реальном времени**
+- **Уведомление о неисправности:**
+  - Отправка данных о возникшей неисправности (например, "обрыв кабеля").
+- **Лог действий ученика:**
+  - Отправка данных о действиях ученика в реальном времени (например, нажатие кнопок, выполнение задач).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+#### **4. Аутентификация и авторизация**
+- **JWT-токены:**
+  - Аутентификация через `/api/auth/` (возвращает `access_token` и `refresh_token`).
+  - Защита эндпоинтов с использованием декораторов (например, `@role_required("преподаватель")`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Роли и права:**
+  - **Администратор:** Полный доступ ко всем функциям.
+  - **Преподаватель:** Управление неисправностями, просмотр метрик учеников.
+  - **Ученик:** Отправка действий в симуляцию.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+#### **5. База данных (PostgreSQL)**
+- **Основные сущности:**
+  - Пользователи (роли: администратор, преподаватель, ученик).
+  - Неисправности (описание, статус, время возникновения).
+  - Метрики учеников (ошибки, время выполнения задач).
+  - Логи действий пользователей.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### **6. Обработка неисправностей**
+- **Логика симуляции:**
+  - При активации неисправности (например, "обрыв кабеля") данные передаются через WebSocket.
+  - Возможность ручного добавления неисправностей преподавателем.
+
+---
+
+#### **7. Безопасность**
+- **Меры защиты:**
+  - Использование параметризованных запросов для предотвращения SQL-инъекций.
+  - Валидация входных данных с использованием Pydantic.
+  - Настройка CORS-политик.
+  - Ограничение частоты запросов (Rate Limiting).
+
+---
+
+#### **8. Инфраструктура**
+- **Docker:**
+  - Создание `Dockerfile` для контейнеризации приложения.
+  - Настройка `docker-compose.yml` для запуска приложения и PostgreSQL.
+- **CI/CD:**
+  - Настройка автоматического тестирования и деплоя через GitLab CI.
+
+---
+
+#### **9. Дополнительные требования**
+- **Документация:**
+  - Swagger/OpenAPI для REST API.
+  - Описание WebSocket-событий.
+- **Тестирование:**
+  - Unit-тесты для критических сценариев (например, обработка команд задвижки).
+  - Интеграционные тесты для WebSocket.
+
+---
+
+#### **10. Логирование**
+- **Логи действий пользователей:**
+  - Запись всех действий пользователей (например, вход в систему, добавление неисправностей).
+- **Системные логи:**
+  - Запись ошибок и важных системных событий.
+
+---
+
+#### **11. Деплой и поддержка**
+- **Деплой:**
+  - Развертывание приложения на сервере с использованием Docker.
+- **Поддержка:**
+  - Настройка мониторинга и алертинга для отслеживания состояния системы.
+
+---
+
+Этот документ представляет собой структурированное техническое задание, которое можно использовать для разработки тренажёра с указанными требованиями.
