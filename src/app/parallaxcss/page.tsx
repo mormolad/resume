@@ -1,25 +1,3 @@
-// import styles from './page.module.css';
-
-// export default function Page() {
-//   return (
-//     <div className={styles.parallax}>
-//       <div className={styles.parallax__group}>
-//         <div
-//           className={`${styles.parallax__layer} ${styles.parallax__layer_back}`}
-//         >
-//           .111.
-//         </div>
-//         <div
-//           className={`${styles.parallax__layer} ${styles.parallax__layer_base}`}
-//         >
-//           .222.
-//         </div>
-//       </div>
-//       <div className={styles.parallax__group}>.333.</div>
-//     </div>
-//   );
-// }
-
 import styles from './page.module.css';
 
 export default function Page() {
@@ -59,8 +37,8 @@ export default function Page() {
           height: '200vh',
           background: '#f0f0f0',
           padding: '20px',
-          top: ' -200px',
-          position: ' relative',
+          top: '-200px',
+          position: 'relative',
         }}
       >
         <h1>Прокрутите вниз, чтобы увидеть эффект параллакса</h1>
