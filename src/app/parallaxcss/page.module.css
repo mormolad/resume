@@ -1,0 +1,60 @@
+/* .parallax__group {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+  font-size: 25px;
+}
+.parallax {
+  perspective: 0.1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.parallax__layer_base {
+  transform: translateZ(0);
+}
+.parallax__layer_back {
+  transform: translateZ(-1px);
+} */
+.parallax {
+  perspective: 1px; /* Увеличиваем значение perspective */
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.parallax__group {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+  font-size: 25px;
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__layer_base {
+  transform: translateZ(0);
+  top: 500px;
+}
+
+.parallax__layer_back {
+  transform: translateZ(-1px) scale(2); /* Масштабируем слой */
+  top: 200px;
+}
+
+.parallax__layer_111 {
+  top: 50%;
+}

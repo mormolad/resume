@@ -1,0 +1,116 @@
+/* Общие стили */
+.header {
+  position: fixed;
+  width: 100vw;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+/* Кружок с бургером */
+.burger {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(#86592bbb); /* Полупрозрачный фон */
+  border-radius: 50%; /* Форма кружка */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #ffe5ca; /* Обводка */
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1000;
+}
+
+.burger span {
+  width: 60%;
+  height: 2px;
+  background-color: #ffe5ca; /* Цвет линии */
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.burger span::before,
+.burger span::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: #ffe5ca;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.burger span::before {
+  top: -8px;
+}
+
+.burger span::after {
+  bottom: -8px;
+}
+
+/* Стили для открытого состояния */
+.burger.open span {
+  background-color: transparent; /* Линия исчезает */
+}
+
+.burger.open span::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.burger.open span::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+/* Навигация */
+.nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background-color: rgba(#ee8a26bb); /* Полупрозрачный фон */
+  border: 1px solid #ffe5ca; /* Обводка */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+}
+
+.nav.open {
+  width: 80vw; /* Ширина меню */
+  height: auto; /* Высота подстраивается под содержимое */
+  padding: 20px;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1); /* Масштабирование */
+}
+
+.nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav__item {
+  margin: 8px 0;
+  color: #ffe5ca;
+}
+
+.nav__link {
+  color: #ffe5ca;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+  color: #ff6347; /* Цвет при наведении */
+}

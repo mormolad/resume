@@ -1,10 +1,10 @@
 import styles from './page.module.css';
-import ParallaxBanner from '@/components/ParallaxBanner/ParallaxBanner';
+import ParallaxBannerDesktop from '@/components/ParallaxBannerDesktop/ParallaxBannerDesktop';
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <ParallaxBanner />
+        <ParallaxBannerDesktop />
       </main>
     </div>
   );
