@@ -22,7 +22,7 @@ const Header = () => {
 
       {/* Навигационное меню */}
       <nav className={`${styles.nav} ${isOpen ? styles.open : ''}`}>
-        {/* <ul className={styles.nav__list}>
+        <ul className={styles.nav__list}>
           <li className={styles.nav__item}>
             <a href="#" className={styles.nav__link}>
               Home
@@ -48,7 +48,7 @@ const Header = () => {
               Contact
             </a>
           </li>
-        </ul> */}
+        </ul>
       </nav>
     </header>
   );

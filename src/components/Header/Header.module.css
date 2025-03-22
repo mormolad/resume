@@ -1,17 +1,16 @@
 /* Общие стили */
 .header {
   position: fixed;
-  width: 100vw;
   top: 20px;
   left: 20px;
-  z-index: 10;
+  z-index: 1000;
 }
 
 /* Кружок с бургером */
 .burger {
   width: 50px;
   height: 50px;
-  background-color: rgba(#86592bbb); /* Полупрозрачный фон */
+  background-color: rgba(238, 138, 38, 0.7); /* Полупрозрачный фон */
   border-radius: 50%; /* Форма кружка */
   display: flex;
   align-items: center;
@@ -21,12 +20,13 @@
   transition: all 0.3s ease;
   position: relative;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .burger span {
   width: 60%;
   height: 2px;
-  background-color: #ffe5ca; /* Цвет линии */
+  background-color: #fff; /* Цвет линии */
   position: relative;
   transition: all 0.3s ease;
 }
@@ -36,7 +36,7 @@
   content: '';
   width: 100%;
   height: 2px;
-  background-color: #ffe5ca;
+  background-color: #fff;
   position: absolute;
   left: 0;
   transition: all 0.3s ease;
@@ -51,6 +51,13 @@
 }
 
 /* Стили для открытого состояния */
+.burger.open {
+  width: 80vw; /* Ширина превращается в прямоугольник */
+  height: auto; /* Высота подстраивается под содержимое */
+  border-radius: 8px; /* Убираем скругление */
+  background-color: rgba(238, 138, 38, 0.7); /* Меняем цвет фона */
+}
+
 .burger.open span {
   background-color: transparent; /* Линия исчезает */
 }
@@ -73,7 +80,7 @@
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
-  background-color: rgba(#ee8a26bb); /* Полупрозрачный фон */
+  background-color: rgba(238, 138, 38, 0.7); /* Полупрозрачный фон */
   border: 1px solid #ffe5ca; /* Обводка */
   border-radius: 8px;
   overflow: hidden;
@@ -96,16 +103,14 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
 }
 
 .nav__item {
   margin: 8px 0;
-  color: #ffe5ca;
 }
 
 .nav__link {
-  color: #ffe5ca;
+  color: #fff;
   text-decoration: none;
   font-size: 16px;
   transition: color 0.3s ease;
