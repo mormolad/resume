@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -25,32 +26,32 @@ const Header = () => {
         <nav className={`${styles.nav} ${isOpen ? styles.open : ''}`}>
           <ul className={styles.nav__list}>
             <li className={styles.nav__item}>
-              <a href="/" className={styles.nav__link}>
+              <Link href="/" className={styles.nav__link}>
                 В начало
-              </a>
+              </Link>
             </li>
             <li className={styles.nav__item}>
-              <a
+              <Link
                 href="https://github.com/mormolad"
                 className={styles.nav__link}
               >
                 Портфолио
-              </a>
+              </Link>
             </li>{' '}
             <li className={styles.nav__item}>
-              <a href="#" className={styles.nav__link}>
+              <Link href="#" className={styles.nav__link}>
                 Анимация
-              </a>
+              </Link>
             </li>
             <li className={styles.nav__item}>
-              <a href="#" className={styles.nav__link}>
+              <Link href="#" className={styles.nav__link}>
                 Обо мне
-              </a>
+              </Link>
             </li>
             <li className={styles.nav__item}>
-              <a href="#" className={styles.nav__link}>
+              <Link href="#" className={styles.nav__link}>
                 Контакты
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
