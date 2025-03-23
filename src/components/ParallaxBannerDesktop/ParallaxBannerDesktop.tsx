@@ -39,9 +39,9 @@ const ParallaxBanner = () => {
           ></div>
         ))}
         <h1
-          style={{
-            transform: `translate(${mouseX * 40}px, ${mouseY * 40}px)`,
-          }}
+        // style={{
+        //   transform: `translate(${mouseX * 40}px, ${mouseY * 40}px)`,
+        // }}
         >
           Perevalov
         </h1>
