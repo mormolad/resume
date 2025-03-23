@@ -6,116 +6,112 @@
   z-index: 1000;
 }
 
-/* Кружок с бургером */
-.burger {
-  width: 50px;
-  height: 50px;
-  background-color: rgba(238, 138, 38, 0.7); /* Полупрозрачный фон */
-  border-radius: 50%; /* Форма кружка */
+/* Контейнер для бургера и меню */
+.burgerMenu {
   display: flex;
   align-items: center;
-  justify-content: center;
+  background-color: rgba(223, 135, 46, 0.559);
+  border-radius: 25px;
+  padding: 12px 8px;
   cursor: pointer;
-  border: 1px solid #ffe5ca; /* Обводка */
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1000;
+  border: 1px solid #6a431b;
+  height: 50px;
+  width: 50px;
   overflow: hidden;
+  transition: width 0.5s ease-in-out, background-color 0.3s ease;
 }
 
-.burger span {
-  width: 60%;
-  height: 2px;
-  background-color: #fff; /* Цвет линии */
+/* Открытое состояние контейнера */
+.burgerMenu.open {
+  width: 490px; /* Задай нужную ширину для открытого состояния */
+  background-color: rgba(223, 135, 46, 0.559);
+}
+
+/* Иконка бургера */
+.burgerIcon {
+  width: 30px;
+  height: 20px;
   position: relative;
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
-.burger span::before,
-.burger span::after {
-  content: '';
-  width: 100%;
+.burgerIcon span {
+  width: 30px;
   height: 2px;
-  background-color: #fff;
+  background-color: #6a431b;
+  position: relative;
+  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+
+.burgerIcon span::before,
+.burgerIcon span::after {
+  content: '';
+  width: 30px;
+  height: 2px;
+  background-color: #6a431b;
   position: absolute;
   left: 0;
-  transition: all 0.3s ease;
+  transition: transform 0.4s ease-in-out;
 }
 
-.burger span::before {
-  top: -8px;
+.burgerIcon span::before {
+  transform: translateY(-8px);
 }
 
-.burger span::after {
-  bottom: -8px;
+.burgerIcon span::after {
+  transform: translateY(8px);
 }
 
-/* Стили для открытого состояния */
-.burger.open {
-  width: 80vw; /* Ширина превращается в прямоугольник */
-  height: auto; /* Высота подстраивается под содержимое */
-  border-radius: 8px; /* Убираем скругление */
-  background-color: rgba(238, 138, 38, 0.7); /* Меняем цвет фона */
+/* Открытое состояние (Крестик) */
+.burgerMenu.open .burgerIcon span {
+  background-color: transparent;
 }
 
-.burger.open span {
-  background-color: transparent; /* Линия исчезает */
-}
-
-.burger.open span::before {
+.burgerMenu.open .burgerIcon span::before {
   transform: rotate(45deg);
-  top: 0;
 }
 
-.burger.open span::after {
+.burgerMenu.open .burgerIcon span::after {
   transform: rotate(-45deg);
-  bottom: 0;
 }
 
-/* Навигация */
+/* Навигационное меню */
 .nav {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  background-color: rgba(238, 138, 38, 0.7); /* Полупрозрачный фон */
-  border: 1px solid #ffe5ca; /* Обводка */
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.3s ease;
   opacity: 0;
-  visibility: hidden;
-  z-index: 999;
+  transform: translateX(-10px);
+  transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.nav.open {
-  width: 80vw; /* Ширина меню */
-  height: auto; /* Высота подстраивается под содержимое */
-  padding: 20px;
+.burgerMenu.open .nav {
   opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, -50%) scale(1); /* Масштабирование */
+  transform: translateX(0);
 }
 
+/* Навигационный список */
 .nav__list {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
 }
 
 .nav__item {
-  margin: 8px 0;
+  margin: 0;
 }
 
 .nav__link {
-  color: #fff;
+  color: #6a431b;
   text-decoration: none;
   font-size: 16px;
   transition: color 0.3s ease;
 }
 
 .nav__link:hover {
-  color: #ff6347; /* Цвет при наведении */
+  color: #b58759;
 }
