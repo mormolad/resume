@@ -1,0 +1,30 @@
+.portfolio {
+  background-image: url('/img/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Фон не двигается при скролле */
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.list {
+  width: 90vw;
+  height: 85vh;
+  border: 1px solid #6a431b;
+  border-radius: 25px;
+  margin: 10vh auto; /* Центрирование */
+  position: relative;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  background-image: linear-gradient(
+    120deg,
+    rgba(69, 42, 16, 0.309),
+    rgba(223, 135, 46, 0.3)
+  );
+}
+.item {
+  list-style: none; /* Убирает маркеры списка */
+}

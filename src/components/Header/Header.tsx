@@ -31,10 +31,7 @@ const Header = () => {
               </Link>
             </li>
             <li className={styles.nav__item}>
-              <Link
-                href="https://github.com/mormolad"
-                className={styles.nav__link}
-              >
+              <Link href="/portfolio" className={styles.nav__link}>
                 Портфолио
               </Link>
             </li>{' '}

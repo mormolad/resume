@@ -10,11 +10,11 @@
 .burgerMenu {
   display: flex;
   align-items: center;
-  background-color: rgba(223, 135, 46, 0.559);
+  background-color: rgba(223, 135, 46, 0.561);
   border-radius: 25px;
   padding: 12px 8px;
   cursor: pointer;
-  border: 1px solid #6a431b;
+  border: 1px solid rgb(106, 67, 27);
   height: 50px;
   width: 50px;
   overflow: hidden;
@@ -23,7 +23,7 @@
 
 /* Открытое состояние контейнера */
 .burgerMenu.open {
-  width: 490px; /* Задай нужную ширину для открытого состояния */
+  width: 500px; /* Задай нужную ширину для открытого состояния */
   background-color: rgba(223, 135, 46, 0.559);
 }
 
@@ -103,6 +103,8 @@
 
 .nav__item {
   margin: 0;
+  font-family: 'Pacifico', cursive;
+  color: #df862e;
 }
 
 .nav__link {

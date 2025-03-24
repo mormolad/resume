@@ -2,31 +2,32 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ParallaxBannerDesktop.module.css'; // Используем CSS Modules
 
-const ParallaxBanner = () => {
-  const [mouseX, setMouseX] = useState(0); // Позиция мыши по X
-  const [mouseY, setMouseY] = useState(0); // Позиция мыши по Y
+const ParallaxBanner: React.FC = () => {
+  const [mouseX, setMouseX] = useState(0); // Позиция мыши по оси X
+  const [mouseY, setMouseY] = useState(0); // Позиция мыши по оси Y
 
-  // Обработчик движения мыши
-  const handleMouseMove = (event: MouseEvent) => {
-    const { clientX, clientY } = event;
-    const { innerWidth, innerHeight } = window;
-
-    // Нормализуем координаты мыши в диапазоне от -1 до 1
-    setMouseX((clientX / innerWidth) * 2 - 1);
-    setMouseY((clientY / innerHeight) * 2 - 1);
-  };
-
-  // Добавляем обработчик события движения мыши
   useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
+    let animationFrameId: number;
+    const handleMouseMoveOptimized = (event: MouseEvent) => {
+      animationFrameId = requestAnimationFrame(() => {
+        const { clientX, clientY } = event;
+        const { innerWidth, innerHeight } = window;
+        setMouseX((clientX / innerWidth) * 2 - 1);
+        setMouseY((clientY / innerHeight) * 2 - 1);
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMoveOptimized);
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMoveOptimized);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
     <div className={styles.banner}>
       <div className={styles.container}>
+        {/* Создаем 9 слоев для параллакс-эффекта */}
         {[...Array(9).keys()].map((index) => (
           <div
             key={index}
@@ -38,13 +39,7 @@ const ParallaxBanner = () => {
             }}
           ></div>
         ))}
-        <h1
-        // style={{
-        //   transform: `translate(${mouseX * 40}px, ${mouseY * 40}px)`,
-        // }}
-        >
-          Perevalov
-        </h1>
+        <h1>Перевалов А.С.</h1>
       </div>
     </div>
   );
