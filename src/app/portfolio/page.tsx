@@ -8,14 +8,30 @@ export default function Portfolio() {
         <li className={styles.item}>
           <Card />
         </li>
-        <li className={styles.item}></li>
-        <li className={styles.item}></li>
-        <li className={styles.item}></li>
-        <li className={styles.item}></li>
-        <li className={styles.item}></li>
-        <li className={styles.item}></li>
-        <li className={styles.item}></li>
-        <li className={styles.item}></li>
+        <li className={styles.item}>
+          <Card />
+        </li>
+        <li className={styles.item}>
+          <Card />
+        </li>
+        <li className={styles.item}>
+          <Card />
+        </li>
+        <li className={styles.item}>
+          <Card />
+        </li>
+        <li className={styles.item}>
+          <Card />
+        </li>
+        <li className={styles.item}>
+          <Card />
+        </li>
+        <li className={styles.item}>
+          <Card />
+        </li>
+        <li className={styles.item}>
+          <Card />
+        </li>
       </ul>
     </main>
   );
