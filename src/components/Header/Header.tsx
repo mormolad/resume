@@ -35,11 +35,11 @@ const Header = () => {
                 Портфолио
               </Link>
             </li>{' '}
-            <li className={styles.nav__item}>
+            {/* <li className={styles.nav__item}>
               <Link href="#" className={styles.nav__link}>
                 Анимация
               </Link>
-            </li>
+            </li> */}
             <li className={styles.nav__item}>
               <Link href="#" className={styles.nav__link}>
                 Обо мне
