@@ -4,15 +4,14 @@
   background-position: center;
   background-attachment: fixed; /* Фон не двигается при скролле */
   width: 100vw;
-  height: 100vh;
+  height: 100h;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
-
 .list {
-  width: 90vw;
-  height: 85vh;
+  width: 90%;
+  height: 80vh;
   border: 1px solid #6a431b;
   border-radius: 25px;
   margin: 10vh auto; /* Центрирование */
@@ -24,6 +23,7 @@
     rgba(69, 42, 16, 0.309),
     rgba(223, 135, 46, 0.3)
   );
+  display: flex;
 }
 .item {
   list-style: none; /* Убирает маркеры списка */

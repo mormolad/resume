@@ -34,12 +34,7 @@ const Header = () => {
               <Link href="/portfolio" className={styles.nav__link}>
                 Портфолио
               </Link>
-            </li>{' '}
-            {/* <li className={styles.nav__item}>
-              <Link href="#" className={styles.nav__link}>
-                Анимация
-              </Link>
-            </li> */}
+            </li>
             <li className={styles.nav__item}>
               <Link href="#" className={styles.nav__link}>
                 Обо мне
