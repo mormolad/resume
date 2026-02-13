@@ -1,14 +1,65 @@
 .card {
-  background-color: #350c0e;
-  margin: 20px;
+  background-color: rgba(53, 12, 14, 0.45);
+  border: 1px solid rgba(184, 117, 10, 0.35);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
   width: 200px;
   height: 300px;
-  clip-path: path(
-    'M 10 50 L 90 50 A 10 10 0 0 0 100 40 L 100 10 A 10 10 0 0 1 110 0 L 190 0 A 10 10 0 0 1 200 10 L 200 290 A 10 10 0 0 1 190 300 L 10 300 A 10 10 0 0 1 0 290 L 0 60 A 10 10 0 0 1 10 50 Z M 10 40 A 10 10 0 0 1 0 30 L 0 10 A 10 10 0 0 1 10 0 L 80 0 A 10 10 0 0 1 90 10 L 90 30 A 10 10 0 0 1 80 40 Z M 25 0   C 40 0 50,10 50 25  C 50 40 40 35 25 35     C 10 35 0 40 0 25 C 0 10 10 0 25 0 Z'
-  );
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  color: #f3d1a2;
+  border-radius: 16px;
 }
 
-.card__nav_link {
+
+.card__media {
+  position: relative;
+  height: 50%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+
+
+.card__content {
+  height: 50%;
+  padding: 12px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(
+    120deg,
+    rgba(69, 42, 16, 0.45),
+    rgba(223, 135, 46, 0.25)
+  );
+  backdrop-filter: blur(10px);
+}
+
+
+.card__title {
+  margin: 0;
+  font-size: 18px;
+  color: #f5d5a7;
+}
+
+.card__description {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #e6c18f;
+  flex: 1;
+}
+
+.card__author {
+  font-size: 12px;
   color: #b8750a;
-  margin-top: 50px;
+  text-transform: uppercase;
 }

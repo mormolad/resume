@@ -1,16 +1,34 @@
+'use client';
+
+import { useState } from 'react';
 import styles from './page.module.css';
-import Card from '@/components/Card/Card';
-import {linksPortfolio} from '../../../shared/constante/links'
+import PortfolioCarousel from '@/components/PortfolioCarousel/PortfolioCarousel';
+import { portfolioItems } from '@/constants/portfolio';
 
 export default function Portfolio() {
-
+  const [isPaused, setIsPaused] = useState(false);
+  const items = portfolioItems;
 
   return (
-    <main className={styles.portfolio}>
-      <ul className={styles.list}> {Object.entries(linksPortfolio).map(([title, href]) => (
-        <Card href={href} title={title} />
-      ))}</ul>
-     
+    <main className={styles.page}>
+      <div className={styles.carousel}>
+        <div
+          className={styles.pauseZone}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <PortfolioCarousel
+            items={items}
+            radius={480}
+            rotationDuration={26}
+            autoPlay
+            pauseOnHover={false}
+            enableScroll
+            isPaused={isPaused}
+            isPointerInside={isPaused}
+          />
+        </div>
+      </div>
     </main>
   );
 }
