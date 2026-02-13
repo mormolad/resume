@@ -13,9 +13,13 @@ const Header = () => {
   return (
     <header className={styles.header}>
       {/* Контейнер с бургером и меню */}
-      <div
+      <button
+        type="button"
         className={`${styles.burgerMenu} ${isOpen ? styles.open : ''}`}
         onClick={toggleMenu}
+        aria-expanded={isOpen}
+        aria-controls="primary-nav"
+        aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
       >
         {/* Иконка бургера / крестика */}
         <div className={styles.burgerIcon}>
@@ -23,7 +27,10 @@ const Header = () => {
         </div>
 
         {/* Навигационное меню (плавное раскрытие) */}
-        <nav className={`${styles.nav} ${isOpen ? styles.open : ''}`}>
+        <nav
+          id="primary-nav"
+          className={`${styles.nav} ${isOpen ? styles.open : ''}`}
+        >
           <ul className={styles.nav__list}>
             <li className={styles.nav__item}>
               <Link href="/" className={styles.nav__link}>
@@ -34,25 +41,20 @@ const Header = () => {
               <Link href="/portfolio" className={styles.nav__link}>
                 Портфолио
               </Link>
-            </li>{' '}
-            {/* <li className={styles.nav__item}>
-              <Link href="#" className={styles.nav__link}>
-                Анимация
-              </Link>
-            </li> */}
+            </li>
             <li className={styles.nav__item}>
-              <Link href="#" className={styles.nav__link}>
+              <Link href="/about_me" className={styles.nav__link}>
                 Обо мне
               </Link>
             </li>
             <li className={styles.nav__item}>
-              <Link href="#" className={styles.nav__link}>
+              <Link href="/contacts" className={styles.nav__link}>
                 Контакты
               </Link>
             </li>
           </ul>
         </nav>
-      </div>
+      </button>
     </header>
   );
 };

@@ -39,7 +39,10 @@ const ParallaxBanner: React.FC = () => {
             }}
           ></div>
         ))}
-        <h1>Перевалов А.С.</h1>
+        <div className={styles.titleGroup}>
+          <h1>Перевалов А.С.</h1>
+          <p className={styles.subtitle}>разработчик</p>
+        </div>
       </div>
     </div>
   );

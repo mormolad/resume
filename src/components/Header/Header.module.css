@@ -18,7 +18,27 @@
   height: 50px;
   width: 50px;
   overflow: hidden;
-  transition: width 0.5s ease-in-out, background-color 0.3s ease;
+  transition: width 0.5s ease-in-out, background-color 0.3s ease,
+    border-color 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+}
+
+.burgerMenu:hover {
+  background-color: rgba(223, 135, 46, 0.75);
+  border-color: #df862e;
+}
+
+.burgerMenu:hover .burgerIcon span,
+.burgerMenu:hover .burgerIcon span::before,
+.burgerMenu:hover .burgerIcon span::after {
+  background-color: #b8750a;
+}
+
+.burgerMenu:focus-visible {
+  outline: 2px solid #df862e;
+  outline-offset: 3px;
 }
 
 /* Открытое состояние контейнера */
@@ -42,7 +62,7 @@
   height: 2px;
   background-color: #6a431b;
   position: relative;
-  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .burgerIcon span::before,
@@ -53,7 +73,7 @@
   background-color: #6a431b;
   position: absolute;
   left: 0;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .burgerIcon span::before {
@@ -103,7 +123,6 @@
 
 .nav__item {
   margin: 0;
-  font-family: 'Pacifico', cursive;
   color: #df862e;
 }
 
